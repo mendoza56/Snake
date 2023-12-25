@@ -77,6 +77,18 @@ void showStartMenu(SDL_Renderer* renderer) {
         SDL_RenderCopy(renderer, enterTexture, NULL, &enterRect);
         SDL_RenderPresent(renderer);
         SDL_Delay(500);
+
+        while (SDL_PollEvent(&event) != 0) {
+            if (event.type == SDL_QUIT) {
+                isGameOver = true;
+                startGame = true;
+            } else if (event.type == SDL_KEYDOWN) {
+                if (event.key.keysym.sym == SDLK_RETURN) {
+                    startGame = true;
+                }
+            }
+        }
+        
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, messageTexture, NULL, &messageRect); // Redraw the "Snake!" text
         SDL_RenderPresent(renderer);
@@ -234,7 +246,7 @@ void collision() {
             }
         }
     }
-    if (x <= -1 || x >= width || y <= -1 || y >= height - 1) {
+    if (x <= -1 || x >= width || y <= -1 || y >= height) {
         isGameOver = true;
     }
 }

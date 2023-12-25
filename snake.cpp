@@ -62,8 +62,6 @@ int main(int argc, char* argv[]) {
         SDL_Delay(100);
     }
 
-    Draw(renderer);
-
     if (isGameOver) {
     char gameOverMessage[50];
     sprintf(gameOverMessage, "You lost. \nYour score was %d.", Score);
