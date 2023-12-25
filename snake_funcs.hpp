@@ -1,8 +1,10 @@
-#include <c:/SDL2/include/SDL.h>
+#define SDL_MAIN_HANDLED
+#include <C:/SDL2/include/SDL.h>
+#include <C:/SDL2/include/SDL_ttf.h>
 
 enum direction {STOP = 0, UP, DOWN, LEFT, RIGHT};
-const int width = 80;
-const int height = 20;
+const int width = 40;
+const int height = 40;
 extern char buffer[width + 2][height + 2];
 extern int x, y; 
 extern int fX, fY; 
@@ -14,6 +16,7 @@ extern direction sDir;
 extern SDL_Window* window;
 extern SDL_Renderer* renderer;
 
+void showStartMenu(SDL_Renderer* renderer);
 void init();
 void Draw(SDL_Renderer* renderer);
 void Input();
