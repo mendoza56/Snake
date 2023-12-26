@@ -78,7 +78,7 @@ void showStartMenu(SDL_Renderer* renderer) {
         //Flashing "Press Enter" text
         SDL_RenderCopy(renderer, enterTexture, NULL, &enterRect);
         SDL_RenderPresent(renderer);
-        SDL_Delay(500);
+        SDL_Delay(250);
 
         while (SDL_PollEvent(&event) != 0) {
             if (event.type == SDL_QUIT) {
@@ -94,7 +94,7 @@ void showStartMenu(SDL_Renderer* renderer) {
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, messageTexture, NULL, &messageRect); // Redraw the "Snake!" text
         SDL_RenderPresent(renderer);
-        SDL_Delay(500);
+        SDL_Delay(250);
     }
 
 
