@@ -1,4 +1,5 @@
 #define SDL_MAIN_HANDLED
+
 #include <C:/SDL2/include/SDL.h>
 #include <C:/SDL2/include/SDL_ttf.h>
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <string>
 #include "snake_funcs.hpp"
 #define SDL_MAIN_HANDLED
 #include <C:/SDL2/include/SDL.h>

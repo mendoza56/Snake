@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <string>
 #include "snake_funcs.hpp"
 #define SDL_MAIN_HANDLED
 #include <C:/SDL2/include/SDL.h>
@@ -8,6 +9,7 @@ using namespace std;
 
 //renderText function
 SDL_Texture* renderText(const std::string& message, const std::string& fontFile, SDL_Color color, int fontSize, SDL_Renderer* renderer) {
+  
     // Open the font
     TTF_Font* font = TTF_OpenFont(fontFile.c_str(), fontSize);
     if (font == nullptr) {
@@ -119,6 +121,7 @@ void init() {
 
 //Printing game state to screen
 void Draw(SDL_Renderer* renderer) {
+
     // Clear screen
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0xFF);
     SDL_RenderClear(renderer);
@@ -144,6 +147,38 @@ void Draw(SDL_Renderer* renderer) {
         SDL_SetRenderDrawColor(renderer, 173, 216, 230, 255);
         SDL_RenderFillRect(renderer, &tail);
     }
+
+
+    //Score text code:
+    // Loading the font
+    TTF_Font* font = TTF_OpenFont("C:/Windows/Fonts/arialbd.ttf", 20);
+    if (font == nullptr) {
+        std::cerr << "Failed to load font: " << TTF_GetError() << std::endl;
+    }
+
+    // Convert the score to a string
+    std::string scoreStr = std::to_string(Score);
+    std::string scoreText = "Score: " + scoreStr;
+    
+    // Create a surface from the score string
+    SDL_Color textColor = {255, 255, 255}; // White text
+    SDL_Surface* scoreSurface = TTF_RenderText_Solid(font, scoreText.c_str(), textColor);
+
+    // Create a texture from the surface
+    SDL_Texture* scoreTexture = SDL_CreateTextureFromSurface(renderer, scoreSurface);
+
+    // Create a rect for the score texture
+    SDL_Rect scoreRect;
+    scoreRect.x = 10; // 10 pixels from the left edge of the window
+    scoreRect.y = 690; // 10 pixels from the top edge of the window
+    SDL_QueryTexture(scoreTexture, NULL, NULL, &scoreRect.w, &scoreRect.h); // Get the width and height of the texture
+
+    // Render the score texture
+    SDL_RenderCopy(renderer, scoreTexture, NULL, &scoreRect);
+
+    // Free the surface and texture
+    SDL_FreeSurface(scoreSurface);
+    SDL_DestroyTexture(scoreTexture);
 
     // Update screen
     SDL_RenderPresent(renderer);
@@ -227,6 +262,7 @@ void update() {
         fY = rand() % height;
         tailLen++;
     }
+
     for (int i = tailLen; i > 0; i--) {
         tailX[i] = tailX[i - 1];
         tailY[i] = tailY[i - 1];
@@ -234,6 +270,7 @@ void update() {
 
     tailX[0] = x;
     tailY[0] = y;
+
 }
 
 
