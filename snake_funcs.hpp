@@ -1,7 +1,10 @@
 #define SDL_MAIN_HANDLED
-
+#include <iostream>
+#include <conio.h>
+#include <string>
 #include <C:/SDL2/include/SDL.h>
 #include <C:/SDL2/include/SDL_ttf.h>
+using namespace std;
 
 enum direction {STOP = 0, UP, DOWN, LEFT, RIGHT};
 const int width = 40;

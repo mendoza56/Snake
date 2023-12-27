@@ -1,11 +1,4 @@
-#include <iostream>
-#include <conio.h>
-#include <string>
 #include "snake_funcs.hpp"
-#define SDL_MAIN_HANDLED
-#include <C:/SDL2/include/SDL.h>
-#include <C:/SDL2/include/SDL_ttf.h>
-using namespace std;
 
 //renderText function
 SDL_Texture* renderText(const std::string& message, const std::string& fontFile, SDL_Color color, int fontSize, SDL_Renderer* renderer) {
